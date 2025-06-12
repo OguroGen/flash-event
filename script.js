@@ -386,7 +386,7 @@ class FlashCalculationGame {
         if (!userName) return;
         
         const currentDate = new Date().toLocaleDateString('ja-JP');
-        const certificateUrl = 'https://tsukuriteidea.com/certificate.html?' + 
+        const certificateUrl = 'https://flash-event.vercel.app/certificate.html?' + 
             'name=' + encodeURIComponent(userName) +
             '&level=' + encodeURIComponent(this.currentLevelName) +
             '&score=' + encodeURIComponent(this.correctCount + '/' + this.totalProblems) +
