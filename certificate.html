@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>暗算フラッシュ認定証</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru:wght@400&family=Noto+Serif+JP:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
         * {
             margin: 0;
@@ -14,8 +14,8 @@
         }
         
         body {
-            font-family: 'Kosugi Maru', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,13 +24,15 @@
         }
         
         .certificate-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(31, 38, 135, 0.2);
             max-width: 500px;
             width: 100%;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .certificate-header {
@@ -50,9 +52,10 @@
         
         .certificate-title {
             font-size: 28px;
-            font-weight: bold;
+            font-weight: 800;
             margin-bottom: 10px;
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
         }
         
         .certificate-subtitle {
