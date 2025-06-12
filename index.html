@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フラッシュ暗算ゲーム - ツクリテイデア</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Kosugi+Maru&family=Righteous&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header id="HeaderDisplay">
+            １０級 : 2桁 2口 4秒
+        </header>
+
+        <div id="progressDisplay">問題 1/5 | 正解: 0</div>
+
+        <div id="mondai"></div>
+
+        <button id="StartButton">START</button>
+
+        <div id="menu">
+            <div class="menu-section">
+                <div class="main-menu" data-menu="kyu">
+                    級から選ぶ
+                </div>
+                <div class="sub-menu" id="kyu-menu">
+                    <select class="select-level" size="1">
+                        <option value="K1">　１級 : 2桁 15口 13秒</option>
+                        <option value="K2">　２級 : 2桁 12口 12秒</option>
+                        <option value="K3">　３級 : 2桁 10口 12秒</option>
+                        <option value="K4">　４級 : 2桁 8口 11秒</option>
+                        <option value="K5">　５級 : 2桁 7口 10秒</option>
+                        <option value="K6">　６級 : 2桁 6口 9秒</option>
+                        <option value="K7">　７級 : 2桁 5口 8秒</option>
+                        <option value="K8">　８級 : 2桁 4口 7秒</option>
+                        <option value="K9">　９級 : 2桁 3口 6秒</option>
+                        <option value="K10" selected>１０級 : 2桁 2口 4秒</option>
+                        <option value="K11">１１級 : 2桁 4口 8秒</option>
+                        <option value="K12">１２級 : 2桁 2口 3秒</option>
+                        <option value="K13">１３級 : 1桁 20口 15秒</option>
+                        <option value="K14">１４級 : 1桁 15口 15秒</option>
+                        <option value="K15">１５級 : 1桁 12口 15秒</option>
+                        <option value="K16">１６級 : 1桁 10口 12秒</option>
+                        <option value="K17">１７級 : 1桁 8口 10秒</option>
+                        <option value="K18">１８級 : 1桁 5口 7秒</option>
+                        <option value="K19">１９級 : 1桁 3口 5秒</option>
+                        <option value="K20">２０級 : 1桁 3口 5秒</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="main-menu" data-menu="dan">
+                    段位から選ぶ
+                </div>
+                <div class="sub-menu" id="dan-menu">
+                    <select class="select-level" size="1">
+                        <option value="D00">　十段 : 3桁 15口 3秒</option>
+                        <option value="D05">準十段 : 3桁 15口 3.60秒</option>
+                        <option value="D90">　九段 : 3桁 15口 4秒</option>
+                        <option value="D95">準九段 : 3桁 12口 3.20秒</option>
+                        <option value="D80">　八段 : 3桁 12口 4秒</option>
+                        <option value="D85">準八段 : 3桁 10口 3.33秒</option>
+                        <option value="D70">　七段 : 3桁 10口 4秒</option>
+                        <option value="D75">準七段 : 3桁 9口 3.60秒</option>
+                        <option value="D60">　六段 : 3桁 9口 4秒</option>
+                        <option value="D65">準六段 : 3桁 8口 3.55秒</option>
+                        <option value="D50">　五段 : 3桁 8口 4秒</option>
+                        <option value="D55">準五段 : 3桁 7口 3.50秒</option>
+                        <option value="D40">　四段 : 3桁 7口 4秒</option>
+                        <option value="D45">準四段 : 3桁 6口 3.43秒</option>
+                        <option value="D30">　三段 : 3桁 6口 4秒</option>
+                        <option value="D35">準三段 : 3桁 5口 3.34秒</option>
+                        <option value="D20">　二段 : 3桁 5口 4秒</option>
+                        <option value="D25">準二段 : 3桁 4口 3.20秒</option>
+                        <option value="D10" selected>　初段 : 3桁 4口 4秒</option>
+                        <option value="D15">準初段 : 3桁 3口 3秒</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="main-menu" data-menu="manual">
+                    マニュアル設定
+                </div>
+                <div class="sub-menu" id="manual-menu">
+                    <div class="manual-controls">
+                        <select name="selectKeta" size="1">
+                            <option value="1">１桁</option>
+                            <option value="2" selected>２桁</option>
+                            <option value="3">３桁</option>
+                            <option value="4">４桁</option>
+                        </select>
+                        <select name="selectKuchi" size="1">
+                            <option value="2" selected>２口</option>
+                            <option value="3">３口</option>
+                            <option value="4">４口</option>
+                            <option value="5">５口</option>
+                            <option value="6">６口</option>
+                            <option value="7">７口</option>
+                            <option value="8">８口</option>
+                            <option value="9">９口</option>
+                            <option value="10">１０口</option>
+                            <option value="11">１１口</option>
+                            <option value="12">１２口</option>
+                            <option value="13">１３口</option>
+                            <option value="14">１４口</option>
+                            <option value="15">１５口</option>
+                        </select>
+                        <select name="selectSpeed" size="1">
+                            <option value="20">０．２秒</option>
+                            <option value="30">０．３秒</option>
+                            <option value="40">０．４秒</option>
+                            <option value="50">０．５秒</option>
+                            <option value="60">０．６秒</option>
+                            <option value="70">０．７秒</option>
+                            <option value="80">０．８秒</option>
+                            <option value="90">０．９秒</option>
+                            <option value="100">１．０秒</option>
+                            <option value="120">１．２秒</option>
+                            <option value="150">１．５秒</option>
+                            <option value="200" selected>２．０秒</option>
+                        </select>
+                        <button id="applyManual">適用</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="AnsInput" class="answer-input">
+            <div class="answer-panel">
+                <div class="answer-title">答えを入力してください</div>
+                <input type="text" id="kotaeText" maxlength="10">
+                
+                <div class="number-pad">
+                    <button class="num-btn" data-value="7">７</button>
+                    <button class="num-btn" data-value="8">８</button>
+                    <button class="num-btn" data-value="9">９</button>
+                    
+                    <button class="num-btn" data-value="4">４</button>
+                    <button class="num-btn" data-value="5">５</button>
+                    <button class="num-btn" data-value="6">６</button>
+                    
+                    <button class="num-btn" data-value="1">１</button>
+                    <button class="num-btn" data-value="2">２</button>
+                    <button class="num-btn" data-value="3">３</button>
+                    
+                    <button class="num-btn" data-value="0">０</button>
+                    <button id="ClearButton" class="control-btn">クリア</button>
+                    
+                    <button id="JudgeButton" class="judge-btn">判定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 結果表示モーダル -->
+        <div id="resultModal" class="result-modal">
+            <div id="resultContent" class="result-content">
+                <div id="resultText"></div>
+                <div id="certificateSection" class="certificate-section" style="display: none;">
+                    <p class="name-prompt">お名前を入力してください：</p>
+                    <input type="text" id="nameInput" class="name-input" placeholder="お名前" />
+                    <div id="qrcode" class="qr-code"></div>
+                    <p class="qr-instruction">スマートフォンでQRコードを読み取ると認定証を表示できます</p>
+                </div>
+                <button id="closeModal" class="close-modal-btn">閉じる</button>
+            </div>
+        </div>
+
+        <footer class="event-footer">
+            <p>ツクリテイデア - フラッシュ暗算ゲーム</p>
+            <p><a href="https://tsukuriteidea.com" target="_blank">https://tsukuriteidea.com</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

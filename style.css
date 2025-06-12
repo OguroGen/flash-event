@@ -1,0 +1,489 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#HeaderDisplay {
+    background-color: black;
+    color: whitesmoke;
+    padding: 15px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#mondai {
+    height: 270px;
+    background: linear-gradient(135deg, #191970 0%, #4169E1 100%);
+    text-align: center;
+    margin: 20px 0;
+    line-height: 1.2;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#mondai::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+#StartButton {
+    width: 100%;
+    height: 60px;
+    margin: 20px 0;
+    font-size: 30px;
+    font-family: 'Kosugi Maru', sans-serif;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(255, 107, 107, 0.4);
+}
+
+#StartButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 107, 107, 0.6);
+}
+
+#StartButton:active {
+    transform: translateY(0);
+}
+
+#StartButton:disabled {
+    background: #888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#menu {
+    margin: 20px 0;
+}
+
+.menu-section {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu {
+    background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+    color: #F0FFFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.main-menu:hover {
+    background: linear-gradient(135deg, #0080FF 0%, #00A0FF 100%);
+    transform: translateY(-1px);
+}
+
+.sub-menu {
+    background: #B0E0E6;
+    display: none;
+    padding: 15px;
+}
+
+.sub-menu.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.select-level {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #4169E1;
+    border-radius: 8px;
+    font-size: 12px;
+    background: white;
+    color: #333;
+}
+
+.manual-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.manual-controls select {
+    padding: 8px;
+    border: 2px solid #4169E1;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    flex: 1;
+    min-width: 80px;
+}
+
+#applyManual {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#applyManual:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(50, 205, 50, 0.4);
+}
+
+.answer-input {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+
+.answer-input.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.answer-panel {
+    background: white;
+    border: 5px solid #FFD700;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    min-width: 350px;
+}
+
+.answer-title {
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#kotaeText {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Black Ops One', cursive;
+    font-size: 24px;
+    text-align: right;
+    color: darkorange;
+    background-color: lightyellow;
+    border: 3px solid #FFD700;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.num-btn {
+    height: 50px;
+    font-size: 18px;
+    color: orange;
+    background: linear-gradient(135deg, #FFFACD 0%, #F0E68C 100%);
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.num-btn:hover {
+    background: linear-gradient(135deg, #F0E68C 0%, #DAA520 100%);
+    transform: translateY(-1px);
+}
+
+.num-btn:active {
+    transform: translateY(0);
+}
+
+.control-btn {
+    grid-column: span 2;
+    height: 50px;
+    font-size: 14px;
+    color: slateblue;
+    background: linear-gradient(135deg, #FFFACD 0%, #F0E68C 100%);
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, #F0E68C 0%, #DAA520 100%);
+    transform: translateY(-1px);
+}
+
+.judge-btn {
+    grid-column: span 3;
+    height: 55px;
+    font-size: 18px;
+    font-weight: bold;
+    color: orangered;
+    background: linear-gradient(135deg, #FFFACD 0%, #F0E68C 100%);
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.judge-btn:hover {
+    background: linear-gradient(135deg, #FFD700 0%, #FF6347 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 99, 71, 0.4);
+}
+
+.event-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.event-footer a {
+    color: #87CEEB;
+    text-decoration: none;
+}
+
+.event-footer a:hover {
+    text-decoration: underline;
+}
+
+/* 新機能：進捗表示 */
+#progressDisplay {
+    text-align: center;
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size: 18px;
+    color: #FFD700;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* 新機能：結果モーダル */
+.result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 2000;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pass {
+    color: #28a745;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+.fail {
+    color: #dc3545;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+.result-score {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.certificate-section {
+    margin: 20px 0;
+}
+
+.name-prompt {
+    color: #333;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.name-input {
+    width: 250px;
+    padding: 12px;
+    font-size: 16px;
+    margin: 15px 0;
+    border: 3px solid #4169E1;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+.qr-code {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-instruction {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.close-modal-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    #HeaderDisplay {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    
+    #mondai {
+        height: 200px;
+    }
+    
+    #StartButton {
+        font-size: 24px;
+        height: 50px;
+    }
+    
+    .answer-panel {
+        min-width: 300px;
+        padding: 15px;
+    }
+    
+    .manual-controls {
+        flex-direction: column;
+    }
+    
+    .manual-controls select,
+    #applyManual {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .answer-panel {
+        min-width: 280px;
+    }
+    
+    #kotaeText {
+        font-size: 20px;
+    }
+    
+    .num-btn,
+    .control-btn,
+    .judge-btn {
+        font-size: 16px;
+    }
+}

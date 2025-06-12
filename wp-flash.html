@@ -1,0 +1,140 @@
+<div id = "HeaderDisplay">１０級 : 2桁 2口 4秒 (10 kyu : 2 digits, 2 numbers, 4 seconds)</div>
+<div id = "mondai"></div>
+
+<button id="StartButton">START</button>
+
+<ul id="menu">
+
+    <li class="kyu_menu"><div class="main_menu">級から選ぶ<br />(Abacus Level 1-20 : Digits, Numbers, Seconds)</div>
+        <ul class="sub_menu">
+            <li>
+                <select class="select_level" size="1">
+                    <option value="K1">　１級 : 2桁15口13秒 ( 1 kyu : 2 digits, 15 numbers, 13 seconds)</option>
+                    <option value="K2">　２級 : 2桁12口12秒 ( 2 kyu : 2 digits, 12 numbers, 12 seconds)</option>
+                    <option value="K3">　３級 : 2桁10口12秒 ( 3 kyu : 2 digits, 10 numbers, 12 seconds)</option>
+                    <option value="K4">　４級 : 2桁 8口11秒 ( 4 kyu : 2 digits, 8 numbers, 11 seconds)</option>
+                    <option value="K5">　５級 : 2桁 7口10秒 ( 5 kyu : 2 digits, 7 numbers, 10 seconds)</option>
+                    <option value="K6">　６級 : 2桁 6口 9秒 ( 6 kyu : 2 digits, 6 numbers, 9 seconds)</option>
+                    <option value="K7">　７級 : 2桁 5口 8秒 ( 7 kyu : 2 digits, 5 numbers, 8 seconds)</option>
+                    <option value="K8">　８級 : 2桁 4口 7秒 ( 8 kyu : 2 digits, 4 numbers, 7 seconds)</option>
+                    <option value="K9">　９級 : 2桁 3口 6秒 ( 9 kyu : 2 digits, 3 numbers, 6 seconds)</option>
+                    <option value="K10" selected>１０級 : 2桁 2口 4秒 (10 kyu : 2 digits, 2 numbers, 4 seconds)</option>
+                    <option value="K11">１１級 : 2桁 4口 8秒 (11 kyu : 2 digits, 4 numbers, 8 seconds)</option>
+                    <option value="K12">１２級 : 2桁 2口 3秒 (12 kyu : 2 digits, 2 numbers, 3 seconds)</option>
+                    <option value="K13">１３級 : 1桁20口15秒 (13 kyu : 1 digits, 20 numbers, 15 seconds)</option>
+                    <option value="K14">１４級 : 1桁15口15秒 (14 kyu : 1 digits, 15 numbers, 15 seconds)</option>
+                    <option value="K15">１５級 : 1桁12口15秒 (15 kyu : 1 digits, 12 numbers, 15 seconds)</option>
+                    <option value="K16">１６級 : 1桁10口12秒 (16 kyu : 1 digits, 10 numbers, 12 seconds)</option>
+                    <option value="K17">１７級 : 1桁 8口10秒 (17 kyu : 1 digits, 8 numbers, 10 seconds)</option>
+                    <option value="K18">１８級 : 1桁 5口 7秒 (18 kyu : 1 digits, 5 numbers, 7 seconds)</option>
+                    <option value="K19">１９級 : 1桁 3口 5秒 (19 kyu : 1 digits, 3 numbers, 5 seconds)</option>
+                    <option value="K20">２０級 : 1桁 3口 5秒 (20 kyu : 1 digits, 3 numbers, 5 seconds)</option>
+                </select>
+            </li>
+        </ul>
+    </li>
+
+    <li class ="dan_menu"><div class="main_menu">段位から選ぶ<br />(Abacus Level Dan1- Dan10 : Digits, Numbers, Seconds)</div>
+        <ul class="sub_menu">
+            <li>
+                <select class="select_level" size="1">
+                    <option value="D00">　十段 : 3桁15口3秒 (10 dan : 3 digits, 15 numbers, 3 seconds)</option>
+                    <option value="D05">準十段 : 3桁15口3.60秒 (pre 10 dan : 3 digits, 15 numbers, 3.60 seconds)</option>
+                    <option value="D90">　九段 : 3桁15口4秒 ( 9 dan : 3 digits, 15 numbers, 4 seconds)</option>
+                    <option value="D95">準九段 : 3桁12口3.20秒 (pre 9 dan : 3 digits, 12 numbers, 3.20 seconds)</option>
+                    <option value="D80">　八段 : 3桁12口4秒 ( 8 dan : 3 digits, 12 numbers, 4 seconds)</option>
+                    <option value="D85">準八段 : 3桁10口3.33秒 (pre 8 dan : 3 digits, 10 numbers, 3.33 seconds)</option>
+                    <option value="D70">　七段 : 3桁10口4秒 ( 7 dan : 3 digits, 10 numbers, 4 seconds)</option>
+                    <option value="D75">準七段 : 3桁9口3.60秒 (pre 7 dan : 3 digits, 9 numbers, 3.60 seconds)</option>
+                    <option value="D60">　六段 : 3桁9口4秒 ( 6 dan : 3 digits, 9 numbers, 4 seconds)</option>
+                    <option value="D65">準六段 : 3桁8口3.55秒 (pre 6 dan : 3 digits, 8 numbers, 3.55 seconds)</option>
+                    <option value="D50">　五段 : 3桁8口4秒 ( 5 dan : 3 digits, 8 numbers, 4 seconds)</option>
+                    <option value="D55">準五段 : 3桁7口3.50秒 (pre 5 dan : 3 digits, 7 numbers, 3.50 seconds)</option>
+                    <option value="D40">　四段 : 3桁7口4秒 ( 4 dan : 3 digits, 7 numbers, 4 seconds)</option>
+                    <option value="D45">準四段 : 3桁6口3.43秒 (pre 4 dan : 3 digits, 6 numbers, 3.43 seconds)</option>
+                    <option value="D30">　三段 : 3桁6口4秒 ( 3 dan : 3 digits, 6 numbers, 4 seconds)</option>
+                    <option value="D35">準三段 : 3桁5口3.34秒 (pre 3 dan : 3 digits, 5 numbers, 3.34 seconds)</option>
+                    <option value="D20">　二段 : 3桁5口4秒 ( 2 dan : 3 digits, 5 numbers, 4 seconds)</option>
+                    <option value="D25">準二段 : 3桁4口3.20秒 (pre 2 dan : 3 digits, 4 numbers, 3.20 seconds)</option>
+                    <option value="D10" selected>　初段 : 3桁4口4秒 ( 1 dan : 3 digits, 4 numbers, 4 seconds)</option>
+                    <option value="D15">準初段 : 3桁3口3秒 (pre 1 dan : 3 digits, 3 numbers, 3 seconds)</option>
+                </select>
+            </li>
+        </ul>
+    </li>
+
+    <li class="manual_menu"><div class="main_menu">マニュアル設定</div>
+        <ul class="sub_menu">
+            <li>
+                <select name="selectKeta" size="1">
+                    <option value="1">１桁</option>
+                    <option value="2">２桁</option>
+                    <option value="3">３桁</option>
+                    <option value="4">４桁</option>
+                </select>
+                <select name="selectKuchi" size="1">
+                    <option value="2">２口</option>
+                    <option value="3">３口</option>
+                    <option value="4">４口</option>
+                    <option value="5">５口</option>
+                    <option value="6">６口</option>
+                    <option value="7">７口</option>
+                    <option value="8">８口</option>
+                    <option value="9">９口</option>
+                    <option value="10">１０口</option>
+                    <option value="11">１１口</option>
+                    <option value="12">１２口</option>
+                    <option value="13">１３口</option>
+                    <option value="14">１４口</option>
+                    <option value="15">１５口</option>
+                </select>
+                <select name="selectSpeed" size="1">
+                    <option value="20">０．２秒</option>
+                    <option value="30">０．３秒</option>
+                    <option value="40">０．４秒</option>
+                    <option value="50">０．５秒</option>
+                    <option value="60">０．６秒</option>
+                    <option value="70">０．７秒</option>
+                    <option value="80">０．８秒</option>
+                    <option value="90">０．９秒</option>
+                    <option value="100">１．０秒</option>
+                    <option value="120">１．２秒</option>
+                    <option value="150">１．５秒</option>
+                </select>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div id="AnsInput">
+    <table>
+        <tr>
+            <td colspan="3">答えを入力してください</td>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="text" id="kotaeText" size="10" maxlength="10"></td>
+        </tr>
+        <tr>
+            <td><button class="num" value = "7">７</button></td>
+            <td><button class="num" value = "8">８</button></td>
+            <td><button class="num" value = "9">９</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" value = "4">４</button></td>
+            <td><button class="num" value = "5">５</button></td>
+            <td><button class="num" value = "6">６</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" value = "1">１</button></td>
+            <td><button class="num" value = "2">２</button></td>
+            <td><button class="num" value = "3">３</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" value = "0">０</button></td>
+            <td colspan="2"><button id="ClearButton">クリア(clear)</button></td>
+        </tr>
+        <tr>
+            <td colspan="3"><button id="JudgeButton">判定(enter)</button></td>
+        </tr>
+    </table>
+</div>

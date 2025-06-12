@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗算フラッシュ認定証</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru:wght@400&family=Noto+Serif+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kosugi Maru', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .certificate-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .certificate-header {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .certificate-header::before {
+            content: '🏆';
+            font-size: 60px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Noto Serif JP', serif;
+        }
+        
+        .certificate-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .certificate-body {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .recipient-name {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-bottom: 3px solid #ff6b6b;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .achievement-text {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .level-badge {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(79, 172, 254, 0.3);
+        }
+        
+        .score-display {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .score-text {
+            font-size: 20px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .date-issued {
+            color: #999;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        
+        .certificate-footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .site-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .decorative-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 8px solid transparent;
+            border-image: linear-gradient(45deg, #ff6b6b, #ffa500, #4facfe, #00f2fe) 1;
+            pointer-events: none;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #ff6b6b; }
+        .confetti:nth-child(2) { left: 20%; animation-delay: 0.5s; background: #ffa500; }
+        .confetti:nth-child(3) { left: 30%; animation-delay: 1s; background: #4facfe; }
+        .confetti:nth-child(4) { left: 70%; animation-delay: 0.3s; background: #00f2fe; }
+        .confetti:nth-child(5) { left: 80%; animation-delay: 0.8s; background: #ff6b6b; }
+        .confetti:nth-child(6) { left: 90%; animation-delay: 1.3s; background: #ffa500; }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .share-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .twitter { background: #1da1f2; }
+        .line { background: #00c300; }
+        .facebook { background: #4267b2; }
+        
+        @media (max-width: 480px) {
+            .certificate-title { font-size: 24px; }
+            .recipient-name { font-size: 28px; }
+            .level-badge { font-size: 20px; padding: 12px 20px; }
+            .certificate-body { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="decorative-border"></div>
+        
+        <!-- 紙吹雪アニメーション -->
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        
+        <div class="certificate-header">
+            <div class="certificate-title">暗算フラッシュ認定証</div>
+            <div class="certificate-subtitle">Certificate of Achievement</div>
+        </div>
+        
+        <div class="certificate-body">
+            <div class="recipient-name" id="recipientName">山田太郎</div>
+            
+            <div class="achievement-text">
+                上記の方は暗算フラッシュ練習において<br>
+                優秀な成績を収めましたので<br>
+                ここに認定いたします
+            </div>
+            
+            <div class="level-badge" id="levelBadge">１０級</div>
+            
+            <div class="score-display">
+                <div class="score-text" id="scoreText">5問中3問正解</div>
+            </div>
+            
+            <div class="date-issued" id="dateIssued">
+                認定日: 2025年6月12日
+            </div>
+        </div>
+        
+        <div class="certificate-footer">
+            <div>
+                <a href="https://tsukuriteidea.com/" class="site-link">ツクリテイデア</a>
+            </div>
+            <div style="margin-top: 10px; font-size: 12px; color: #999;">
+                暗算フラッシュ練習アプリ
+            </div>
+            
+            <div class="share-buttons">
+                <a href="#" class="share-btn twitter" id="twitterShare">Twitterで共有</a>
+                <a href="#" class="share-btn line" id="lineShare">LINEで共有</a>
+                <a href="#" class="share-btn facebook" id="facebookShare">Facebookで共有</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URLパラメータから情報を取得
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // 認定証情報を設定
+        function setCertificateInfo() {
+            var name = getUrlParameter('name') || '名前未設定';
+            var level = getUrlParameter('level') || '１０級';
+            var score = getUrlParameter('score') || '3/5';
+            var date = getUrlParameter('date') || new Date().toLocaleDateString('ja-JP');
+            
+            document.getElementById('recipientName').textContent = name;
+            document.getElementById('levelBadge').textContent = level;
+            document.getElementById('scoreText').textContent = score + '問正解';
+            document.getElementById('dateIssued').textContent = '認定日: ' + date;
+            
+            // ページタイトルも更新
+            document.title = name + 'さんの' + level + '認定証';
+            
+            // シェアボタンの設定
+            setupShareButtons(name, level, score);
+        }
+        
+        // シェアボタンの設定
+        function setupShareButtons(name, level, score) {
+            var shareText = `🏆${name}さんが暗算フラッシュ${level}に合格しました！\n成績: ${score}問正解\n#暗算フラッシュ #そろばん #暗算`;
+            var shareUrl = window.location.href;
+            
+            // Twitter
+            document.getElementById('twitterShare').href = 
+                `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+            
+            // LINE
+            document.getElementById('lineShare').href = 
+                `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
+            
+            // Facebook
+            document.getElementById('facebookShare').href = 
+                `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        }
+        
+        // ページ読み込み時に実行
+        window.addEventListener('load', function() {
+            setCertificateInfo();
+            
+            // 名前が設定されていない場合のメッセージ
+            if (!getUrlParameter('name')) {
+                document.getElementById('recipientName').textContent = '名前を設定してください';
+                document.getElementById('recipientName').style.color = '#999';
+            }
+        });
+        
+        // 画面をタップすると紙吹雪を再生
+        document.addEventListener('click', function() {
+            var confettis = document.querySelectorAll('.confetti');
+            confettis.forEach(function(confetti) {
+                confetti.style.animation = 'none';
+                setTimeout(function() {
+                    confetti.style.animation = 'confetti-fall 3s linear infinite';
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
