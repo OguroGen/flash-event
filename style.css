@@ -43,6 +43,428 @@ body::before {
     padding: 20px 30px;
     text-align: center;
     border-radius: 20px;
+    text-align: center;
+    max-width: 550px;
+    width: 90%;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 128, 0.6),
+        0 0 100px rgba(0, 255, 255, 0.4);
+    border: 3px solid #00ffff;
+}
+
+.pass {
+    color: #00ff00;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.8),
+        0 0 40px rgba(0, 255, 0, 0.6);
+    animation: successGlow 2s infinite alternate;
+}
+
+@keyframes successGlow {
+    0% { text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6); }
+    100% { text-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.8); }
+}
+
+.fail {
+    color: #ff0080;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 
+        0 0 20px rgba(255, 0, 128, 0.8),
+        0 0 40px rgba(255, 0, 128, 0.6);
+    animation: failGlow 2s infinite alternate;
+}
+
+@keyframes failGlow {
+    0% { text-shadow: 0 0 20px rgba(255, 0, 128, 0.8), 0 0 40px rgba(255, 0, 128, 0.6); }
+    100% { text-shadow: 0 0 30px rgba(255, 0, 128, 1), 0 0 60px rgba(255, 0, 128, 0.8); }
+}
+
+.result-score {
+    font-size: 22px;
+    color: #00ffff;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.certificate-section {
+    margin: 30px 0;
+}
+
+.name-prompt {
+    color: #00ffff;
+    font-weight: 700;
+    margin: 25px 0;
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.name-input {
+    width: 320px;
+    padding: 20px 25px;
+    font-size: 20px;
+    margin: 25px 0;
+    border: 3px solid #00ffff;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ffff;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #ff0080;
+    box-shadow: 0 0 25px rgba(255, 0, 128, 0.6);
+    color: #ff0080;
+    text-shadow: 0 0 10px rgba(255, 0, 128, 0.8);
+}
+
+.qr-code {
+    margin: 35px auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.6),
+        0 0 60px rgba(255, 0, 128, 0.4);
+    border: 3px solid #00ffff;
+}
+
+.qr-instruction {
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.close-modal-btn {
+    background: linear-gradient(135deg, #ff0080 0%, #00ffff 100%);
+    color: #000000;
+    border: none;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 25px rgba(255, 0, 128, 0.5);
+}
+
+.close-modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(255, 0, 128, 0.8);
+}
+
+.event-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 35px;
+    background: 
+        linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 0, 51, 0.8) 100%);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    font-size: 18px;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-family: 'Orbitron', monospace;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.event-footer a {
+    color: #ff0080;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 0, 128, 0.8);
+}
+
+.event-footer a:hover {
+    color: #00ffff;
+    text-decoration: underline;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    #HeaderDisplay {
+        font-size: 18px;
+        padding: 20px 25px;
+    }
+    
+    #mondai {
+        height: 250px;
+        font-size: 90px;
+    }
+    
+    #StartButton {
+        font-size: 24px;
+        height: 70px;
+    }
+    
+    .answer-panel {
+        min-width: 350px;
+        padding: 30px;
+    }
+    
+    .manual-controls {
+        flex-direction: column;
+    }
+    
+    .manual-controls select,
+    #applyManual {
+        width: 100%;
+    }
+
+    .result-content {
+        padding: 35px 25px;
+    }
+
+    .pass, .fail {
+        font-size: 30px;
+    }
+
+    .name-input {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .answer-panel {
+        min-width: 320px;
+    }
+    
+    #kotaeText {
+        font-size: 24px;
+    }
+    
+    .num-btn,
+    .control-btn,
+    .judge-btn {
+        font-size: 18px;
+    }
+
+    .name-input {
+        width: 250px;
+    }
+
+    #mondai {
+        font-size: 70px;
+    }
+
+    #HeaderDisplay {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+}
+
+/* コミケ特殊エフェクト */
+@keyframes otakuSparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1) rotate(180deg);
+    }
+}
+
+.otaku-sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffbe0b;
+    border-radius: 50%;
+    animation: otakuSparkle 3s ease-in-out infinite;
+    box-shadow: 0 0 10px #ffbe0b;
+}
+
+/* ネオングロー効果 */
+.neon-glow {
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px #ff006e,
+        0 0 25px #ff006e;
+}
+
+/* グラデーション文字効果 */
+.gradient-text {
+    background: linear-gradient(135deg, #ff0080 0%, #00ffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ホログラム効果 */
+.hologram {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+    );
+    background-size: 20px 20px;
+    animation: hologramShift 2s linear infinite;
+}
+
+@keyframes hologramShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+/* 追加：パルスアニメーション */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 追加：グリッチエフェクト */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff0080;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0%, 14%, 15%, 49%, 50%, 99%, 100% {
+        transform: translate(0);
+    }
+    15%, 49% {
+        transform: translate(-2px, 0);
+    }
+    50%, 99% {
+        transform: translate(2px, 0);
+    }
+}
+
+@keyframes glitch-2 {
+    0%, 20%, 21%, 62%, 63%, 99%, 100% {
+        transform: translate(0);
+    }
+    21%, 62% {
+        transform: translate(2px, 0);
+    }
+    63%, 99% {
+        transform: translate(-2px, 0);
+    }
+}
+
+/* 追加：レーザービーム効果 */
+.laser-beam {
+    position: relative;
+    overflow: hidden;
+}
+
+.laser-beam::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 255, 0.4),
+        rgba(255, 0, 128, 0.4),
+        transparent
+    );
+    animation: laserSweep 3s infinite;
+}
+
+@keyframes laserSweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* 追加：データストリーム背景 */
+.data-stream {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.data-stream::before {
+    content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: #00ffff;
+    white-space: pre;
+    line-height: 1.5;
+    animation: dataFlow 20s linear infinite;
+}
+
+@keyframes dataFlow {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0%); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+} 20px;
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 18px;
@@ -610,7 +1032,246 @@ body::before {
     }
     
     #mondai {
+    #mondai {
         height: 250px;
+        font-size: 90px;
+    }
+    
+    #StartButton {
+        font-size: 24px;
+        height: 70px;
+    }
+    
+    .answer-panel {
+        min-width: 350px;
+        padding: 30px;
+    }
+    
+    .manual-controls {
+        flex-direction: column;
+    }
+    
+    .manual-controls select,
+    #applyManual {
+        width: 100%;
+    }
+
+    .result-content {
+        padding: 35px 25px;
+    }
+
+    .pass, .fail {
+        font-size: 30px;
+    }
+
+    .name-input {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .answer-panel {
+        min-width: 320px;
+    }
+    
+    #kotaeText {
+        font-size: 24px;
+    }
+    
+    .num-btn,
+    .control-btn,
+    .judge-btn {
+        font-size: 18px;
+    }
+
+    .name-input {
+        width: 250px;
+    }
+
+    #mondai {
+        font-size: 70px;
+    }
+
+    #HeaderDisplay {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+}
+
+/* コミケ特殊エフェクト */
+@keyframes otakuSparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1) rotate(180deg);
+    }
+}
+
+.otaku-sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffbe0b;
+    border-radius: 50%;
+    animation: otakuSparkle 3s ease-in-out infinite;
+    box-shadow: 0 0 10px #ffbe0b;
+}
+
+/* ネオングロー効果 */
+.neon-glow {
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px #ff006e,
+        0 0 25px #ff006e;
+}
+
+/* グラデーション文字効果 */
+.gradient-text {
+    background: linear-gradient(135deg, #ff0080 0%, #00ffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ホログラム効果 */
+.hologram {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+    );
+    background-size: 20px 20px;
+    animation: hologramShift 2s linear infinite;
+}
+
+@keyframes hologramShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+/* 追加：パルスアニメーション */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 追加：グリッチエフェクト */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff0080;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0%, 14%, 15%, 49%, 50%, 99%, 100% {
+        transform: translate(0);
+    }
+    15%, 49% {
+        transform: translate(-2px, 0);
+    }
+    50%, 99% {
+        transform: translate(2px, 0);
+    }
+}
+
+@keyframes glitch-2 {
+    0%, 20%, 21%, 62%, 63%, 99%, 100% {
+        transform: translate(0);
+    }
+    21%, 62% {
+        transform: translate(2px, 0);
+    }
+    63%, 99% {
+        transform: translate(-2px, 0);
+    }
+}
+
+/* 追加：レーザービーム効果 */
+.laser-beam {
+    position: relative;
+    overflow: hidden;
+}
+
+.laser-beam::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 255, 0.4),
+        rgba(255, 0, 128, 0.4),
+        transparent
+    );
+    animation: laserSweep 3s infinite;
+}
+
+@keyframes laserSweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* 追加：データストリーム背景 */
+.data-stream {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.data-stream::before {
+    content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: #00ffff;
+    white-space: pre;
+    line-height: 1.5;
+    animation: dataFlow 20s linear infinite;
+}
+
+@keyframes dataFlow {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0%); }
+} 250px;
         font-size: 100px;
     }
     
