@@ -497,8 +497,21 @@ class FlashCalculationGame {
     }
     
     generateLevel1Problems() {
+        // 20級：1桁の繰り上がり下がりない問題（五玉無し）
         for (let i = 0; i < this.numbers; i++) {
-            this.mondai[i] = Math.floor(Math.random() * 4) + 1;
+            let check;
+            do {
+                check = false;
+                const tmpR = Math.floor(Math.random() * 4) + 1;
+                if (tmpR === 1) this.mondai[i] = 1;
+                if (tmpR === 2) this.mondai[i] = 2;
+                if (tmpR === 3) this.mondai[i] = 3;
+                if (tmpR === 4) this.mondai[i] = 4;
+                
+                if (i > 0 && this.mondai[i] === this.mondai[i-1]) {
+                    check = true;
+                }
+            } while (check);
         }
     }
     

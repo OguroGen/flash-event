@@ -495,92 +495,107 @@ body::before {
 }
 
 .name-prompt {
-    color: #2d3748;
-    font-weight: 600;
-    margin: 20px 0;
+    color: #1a1a2e;
+    font-weight: 700;
+    margin: 25px 0;
     font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.5px;
 }
 
 .name-input {
-    width: 280px;
-    padding: 15px 20px;
-    font-size: 18px;
-    margin: 20px 0;
-    border: 2px solid rgba(102, 126, 234, 0.3);
-    border-radius: 15px;
+    width: 300px;
+    padding: 18px 25px;
+    font-size: 20px;
+    margin: 25px 0;
+    border: 3px solid rgba(255, 0, 110, 0.3);
+    border-radius: 20px;
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.9);
     transition: all 0.3s ease;
+    letter-spacing: 1px;
 }
 
 .name-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #ff006e;
+    box-shadow: 0 0 0 3px rgba(255, 0, 110, 0.2);
+    background: white;
 }
 
 .qr-code {
-    margin: 25px auto;
-    padding: 25px;
+    margin: 30px auto;
+    padding: 30px;
     background: white;
-    border-radius: 20px;
+    border-radius: 25px;
     display: inline-block;
-    box-shadow: 0 8px 25px rgba(31, 38, 135, 0.15);
-    border: 1px solid rgba(102, 126, 234, 0.1);
+    box-shadow: 
+        0 15px 35px rgba(26, 26, 46, 0.2),
+        0 0 0 3px rgba(255, 0, 110, 0.3);
+    border: 3px solid rgba(255, 0, 110, 0.1);
 }
 
 .qr-instruction {
-    font-size: 14px;
-    color: #718096;
-    margin-top: 15px;
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
     font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 .close-modal-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 15px;
+    padding: 18px 35px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 30px;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 0, 110, 0.4);
 }
 
 .close-modal-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 0, 110, 0.5);
 }
 
 .event-footer {
     text-align: center;
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    font-size: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 50px;
+    padding: 30px;
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: white;
     font-family: 'Inter', sans-serif;
+    box-shadow: 0 8px 25px rgba(26, 26, 46, 0.3);
 }
 
 .event-footer a {
-    color: #90cdf4;
+    color: #06ffa5;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: color 0.3s ease;
+    text-shadow: 0 0 10px rgba(6, 255, 165, 0.3);
 }
 
 .event-footer a:hover {
-    color: #63b3ed;
+    color: #3a86ff;
     text-decoration: underline;
+    text-shadow: 0 0 15px rgba(58, 134, 255, 0.5);
 }
 
 /* レスポンシブデザイン */
@@ -590,22 +605,23 @@ body::before {
     }
     
     #HeaderDisplay {
-        font-size: 16px;
-        padding: 18px 25px;
+        font-size: 18px;
+        padding: 20px 30px;
     }
     
     #mondai {
-        height: 220px;
+        height: 250px;
+        font-size: 100px;
     }
     
     #StartButton {
-        font-size: 20px;
-        height: 55px;
+        font-size: 24px;
+        height: 65px;
     }
     
     .answer-panel {
-        min-width: 320px;
-        padding: 25px;
+        min-width: 350px;
+        padding: 30px;
     }
     
     .manual-controls {
@@ -618,35 +634,39 @@ body::before {
     }
 
     .result-content {
-        padding: 30px 25px;
+        padding: 35px 25px;
     }
 
     .pass, .fail {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .name-input {
-        width: 250px;
+        width: 280px;
     }
 }
 
 @media (max-width: 480px) {
     .answer-panel {
-        min-width: 290px;
+        min-width: 320px;
     }
     
     #kotaeText {
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .num-btn,
     .control-btn,
     .judge-btn {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .name-input {
-        width: 220px;
+        width: 250px;
+    }
+
+    #mondai {
+        font-size: 80px;
     }
 }
 
@@ -655,6 +675,37 @@ body::before {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
+}
+
+/* コミケ風のスペシャルエフェクト */
+.otaku-sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ffbe0b;
+    border-radius: 50%;
+    animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+}
+
+/* ネオングロー効果 */
+.neon-glow {
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px #ff006e,
+        0 0 25px #ff006e;
 }
 
 /* グラデーション文字効果 */
