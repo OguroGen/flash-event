@@ -13,6 +13,8 @@ jQuery(function ($) {
     Interval = 2000;
     difficulty = 4;
     
+    var isGameInProgress = false; // ゲーム進行中フラグ
+    
     //問題の表示スタイル
     objMondaiStyle.color = "#E0FFFF";
     objMondaiStyle.fontSize = "100pt";
@@ -35,6 +37,8 @@ jQuery(function ($) {
     objMissStyle.paddingTop = "20px";
     
     function Ready() {
+        isGameInProgress = true;
+        $("#QuitButton").show(); // やめるボタンを表示
         
         $("#mondai").css(objReadyStyle).text("READY").show().animate({fontSize: "60pt"}, 800, function () {
             
@@ -74,6 +78,8 @@ jQuery(function ($) {
             inputAns = Number(inputAns);
             $("#AnsInput").hide();
             $("#StartButton").prop("disabled",false);
+            isGameInProgress = false;
+            $("#QuitButton").hide(); // やめるボタンを非表示
             
             if (inputAns === myKotae) {
                 $("#mondai").css(objCorrectStyle).html("ご明算<br>Correct.").show();
@@ -572,6 +578,14 @@ jQuery(function ($) {
     
     $("#AnsInput").hide();      //答え入力テンキーを非表示に
     $(".dan_menu .sub_menu").hide();    //サブメニューを非表示に
+    $("#QuitButton").hide();     //やめるボタンを非表示に
+    
+    //はじめるボタンをクリック（待ち受け画面からゲーム画面へ）
+    $("#BeginButton").on("click", function () {
+        $("#WelcomeScreen").fadeOut(500, function() {
+            $("#GameScreen").fadeIn(500);
+        });
+    });
      
     //メニューバーをクリック
     $('.main_menu').on("click", function () {
@@ -625,6 +639,19 @@ jQuery(function ($) {
     //テンキーの判定ボタンをクリック
     $("#JudgeButton").on("click", function () {
         AnswerCheck();
+    })
+    
+    //やめるボタンをクリック
+    $("#QuitButton").on("click", function () {
+        if (isGameInProgress) {
+            // ゲームを中断
+            myCnt = Kuchi;
+            isGameInProgress = false;
+            $("#AnsInput").hide();
+            $("#QuitButton").hide();
+            $("#StartButton").prop("disabled", false);
+            $("#mondai").css(objMissStyle).text("中断しました").show();
+        }
     })
     
     //リストボックスから級・段を選ぶ

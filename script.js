@@ -14,13 +14,41 @@ class FlashCalculationGame {
         this.totalProblems = 5;
         this.currentLevelName = "１０級";
         
+        // ゲーム進行状態管理
+        this.isGameInProgress = false;
+        
         this.init();
+    }
+    
+    // トップに戻る機能
+    backToTop() {
+        // ゲームが進行中の場合は中断
+        if (this.isGameInProgress) {
+            this.quitGame();
+        }
+        
+        // モーダルを閉じる
+        document.getElementById('resultModal').style.display = 'none';
+        
+        // マニュアル設定パネルを非表示（要素が存在する場合のみ）
+        const manualSettings = document.getElementById('manualSettings');
+        if (manualSettings) {
+            manualSettings.style.display = 'none';
+        }
+        
+        // ゲームをリセット
+        this.resetTest();
+        
+        // 待ち受け画面に戻る
+        this.showWelcomeScreen();
+        
+        // 問題表示をクリア
+        document.getElementById('mondai').textContent = '';
     }
     
     init() {
         this.bindEvents();
         this.hideAnswerInput();
-        this.hideAllSubMenus();
         this.updateProgress();
     }
     
@@ -31,30 +59,29 @@ class FlashCalculationGame {
     }
     
     bindEvents() {
+        // はじめるボタン（待ち受け画面からゲーム画面へ）
+        document.getElementById('BeginButton').addEventListener('click', () => {
+            this.showGameScreen();
+        });
+        
         // スタートボタン
         document.getElementById('StartButton').addEventListener('click', () => {
             this.startGame();
         });
         
-        // メニュー
-        document.querySelectorAll('.main-menu').forEach(menu => {
-            menu.addEventListener('click', (e) => {
-                this.toggleMenu(e.target.dataset.menu);
-            });
+        // やめるボタン
+        document.getElementById('QuitButton').addEventListener('click', () => {
+            this.quitGame();
         });
         
-        // レベル選択
-        document.querySelectorAll('.select-level').forEach(select => {
-            select.addEventListener('change', (e) => {
-                this.setDifficulty(e.target.value);
-                this.updateHeaderDisplay(e.target.options[e.target.selectedIndex].text);
-                this.currentLevelName = e.target.options[e.target.selectedIndex].text.split(' :')[0].trim();
-            });
+        // トップに戻るボタン
+        document.getElementById('BackToTopButton').addEventListener('click', () => {
+            this.backToTop();
         });
         
-        // マニュアル設定適用
-        document.getElementById('applyManual').addEventListener('click', () => {
-            this.applyManualSettings();
+        // レベルセレクター
+        document.getElementById('levelSelector').addEventListener('change', (e) => {
+            this.handleLevelChange(e.target.value);
         });
         
         // テンキー
@@ -93,34 +120,112 @@ class FlashCalculationGame {
         });
     }
     
-    toggleMenu(menuType) {
-        const allSubMenus = document.querySelectorAll('.sub-menu');
-        const targetMenu = document.getElementById(`${menuType}-menu`);
-        
-        allSubMenus.forEach(menu => {
-            if (menu !== targetMenu) {
-                menu.classList.remove('active');
-            }
-        });
-        
-        if (targetMenu.classList.contains('active')) {
-            targetMenu.classList.remove('active');
-        } else {
-            targetMenu.classList.add('active');
+    // 画面遷移関数
+    showGameScreen() {
+        document.getElementById('WelcomeScreen').style.display = 'none';
+        document.getElementById('GameScreen').style.display = 'block';
+    }
+    
+    showWelcomeScreen() {
+        document.getElementById('GameScreen').style.display = 'none';
+        document.getElementById('WelcomeScreen').style.display = 'flex';
+    }
+    
+    // ゲーヤ中断機能
+    quitGame() {
+        if (this.isGameInProgress) {
+            this.isGameInProgress = false;
+            this.currentCount = this.numbers; // 問題表示を停止
+            this.hideAnswerInput();
+            document.getElementById('QuitButton').style.display = 'none';
+            document.getElementById('StartButton').disabled = false;
+            
+            const mondaiDiv = document.getElementById('mondai');
+            this.setStyle(mondaiDiv, {
+                color: "#ff6b9d",
+                fontSize: "40pt",
+                fontFamily: 'M PLUS Rounded 1c',
+                paddingTop: "50px"
+            });
+            mondaiDiv.innerHTML = "😢 中断しました 😢<br>またチャレンジしてください！";
         }
     }
     
-    hideAllSubMenus() {
-        document.querySelectorAll('.sub-menu').forEach(menu => {
-            menu.classList.remove('active');
-        });
+    // レベル変更処理
+    handleLevelChange(levelId) {
+        console.log('Level changed to:', levelId); // デバッグ用
+        
+        if (levelId === 'MANUAL') {
+            // マニュアル設定パネルを表示（要素が存在する場合のみ）
+            const manualSettings = document.getElementById('manualSettings');
+            if (manualSettings) {
+                manualSettings.style.display = 'block';
+            }
+        } else {
+            // マニュアル設定パネルを非表示（要素が存在する場合のみ）
+            const manualSettings = document.getElementById('manualSettings');
+            if (manualSettings) {
+                manualSettings.style.display = 'none';
+            }
+            
+            // レベル設定を適用
+            console.log('Before setDifficulty - Current settings:', {
+                difficulty: this.difficulty,
+                digits: this.digits,
+                numbers: this.numbers,
+                interval: this.interval
+            });
+            
+            this.setDifficulty(levelId);
+            this.currentLevelName = this.getLevelName(levelId);
+            
+            console.log('After setDifficulty - New settings:', {
+                difficulty: this.difficulty,
+                digits: this.digits,
+                numbers: this.numbers,
+                interval: this.interval
+            });
+            
+            // デバッグ情報を表示
+            console.log('Difficulty settings:', {
+                difficulty: this.difficulty,
+                digits: this.digits,
+                numbers: this.numbers,
+                interval: this.interval,
+                levelName: this.currentLevelName
+            });
+        }
     }
     
-    updateHeaderDisplay(text) {
-        document.getElementById('HeaderDisplay').textContent = text;
+    // レベル名取得
+    getLevelName(levelId) {
+        const selector = document.getElementById('levelSelector');
+        const option = selector.querySelector(`option[value="${levelId}"]`);
+        return option ? option.textContent.split(' :')[0].trim() : 'カスタム';
+    }
+    
+    // マニュアル設定適用
+    applyManualSettings() {
+        const ketaSelect = document.querySelector('select[name="selectKeta"]');
+        const kuchiSelect = document.querySelector('select[name="selectKuchi"]');
+        const speedSelect = document.querySelector('select[name="selectSpeed"]');
+        
+        this.digits = parseInt(ketaSelect.value);
+        this.numbers = parseInt(kuchiSelect.value);
+        this.interval = parseInt(speedSelect.value) * 10;
+        this.difficulty = 4;
+        this.currentLevelName = `カスタム(${this.digits}桁${this.numbers}口)`;
+        
+        // マニュアル設定パネルを非表示
+        document.getElementById('manualSettings').style.display = 'none';
+        
+        // セレクターをマニュアル設定に戻す
+        document.getElementById('levelSelector').value = 'MANUAL';
     }
     
     setDifficulty(levelId) {
+        console.log('Setting difficulty for level:', levelId); // デバッグ用
+        
         const levels = {
             // 段位
             "D00": { difficulty: 5, digits: 3, numbers: 15, interval: 200 },
@@ -173,6 +278,10 @@ class FlashCalculationGame {
             this.digits = level.digits;
             this.numbers = level.numbers;
             this.interval = level.interval;
+            
+            console.log('Level settings applied:', level); // デバッグ用
+        } else {
+            console.log('Level not found:', levelId); // デバッグ用
         }
     }
     
@@ -198,9 +307,13 @@ class FlashCalculationGame {
         this.correctAnswer = 0;
         this.resetTest(); // 新機能
         this.clearInput();
+        this.isGameInProgress = true; // ゲーム開始
         
         const startBtn = document.getElementById('StartButton');
         startBtn.disabled = true;
+        
+        // やめるボタンを表示
+        document.getElementById('QuitButton').style.display = 'inline-block';
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
@@ -212,11 +325,13 @@ class FlashCalculationGame {
     resetTest() {
         this.currentProblem = 1;
         this.correctCount = 0;
+        this.isGameInProgress = false; // ゲーム終了
         this.updateProgress();
         document.getElementById('resultModal').style.display = 'none';
         document.getElementById('nameInput').value = '';
         document.getElementById('qrcode').innerHTML = '';
         document.getElementById('StartButton').disabled = false;
+        document.getElementById('QuitButton').style.display = 'none'; // やめるボタンを非表示
     }
     
     showReady() {
@@ -239,9 +354,10 @@ class FlashCalculationGame {
                     setTimeout(() => {
                         mondaiDiv.textContent = "";
                         this.setStyle(mondaiDiv, {
-                            color: "#E0FFFF",
-                            fontSize: "100pt",
-                            fontFamily: 'Sawarabi Gothic',
+                            color: "#ff6b9d",
+                            fontSize: "120px",
+                            fontFamily: 'M PLUS Rounded 1c',
+                            fontWeight: "900",
                             paddingTop: "30px"
                         });
                         setTimeout(() => {
@@ -254,26 +370,36 @@ class FlashCalculationGame {
     }
     
     showProblem() {
-        if (this.currentCount < this.numbers) {
+        if (this.currentCount < this.numbers && this.isGameInProgress) {
             const mondaiDiv = document.getElementById('mondai');
-            mondaiDiv.style.color = "#E0FFFF";
+            this.setStyle(mondaiDiv, {
+                color: "#ff6b9d",
+                fontSize: "120px",
+                fontFamily: 'M PLUS Rounded 1c',
+                fontWeight: "900"
+            });
             mondaiDiv.textContent = this.mondai[this.currentCount];
             this.currentCount++;
             
             setTimeout(() => {
-                this.hideInterval();
+                if (this.isGameInProgress) {
+                    this.hideInterval();
+                }
             }, this.interval * 0.7);
-        } else {
+        } else if (this.isGameInProgress) {
             this.showAnswerInput();
         }
     }
     
     hideInterval() {
         const mondaiDiv = document.getElementById('mondai');
-        mondaiDiv.style.color = "#191970";
+        // 文字を完全に消す
+        mondaiDiv.textContent = "";
         
         setTimeout(() => {
-            this.showProblem();
+            if (this.isGameInProgress) {
+                this.showProblem();
+            }
         }, this.interval * 0.3);
     }
     
@@ -305,6 +431,8 @@ class FlashCalculationGame {
         if (this.isNumeric(inputAns)) {
             const userAnswer = Number(inputAns);
             this.hideAnswerInput();
+            this.isGameInProgress = false; // ゲーム終了
+            document.getElementById('QuitButton').style.display = 'none'; // やめるボタンを非表示
             
             const mondaiDiv = document.getElementById('mondai');
             const isCorrect = (userAnswer === this.correctAnswer);
@@ -351,6 +479,8 @@ class FlashCalculationGame {
                         this.currentCount = 0;
                         this.correctAnswer = 0;
                         this.generateProblems();
+                        this.isGameInProgress = true; // 次の問題のゲーム開始
+                        document.getElementById('QuitButton').style.display = 'inline-block'; // やめるボタンを再表示
                         this.showReady();
                     }, 1000);
                 }
@@ -464,6 +594,13 @@ class FlashCalculationGame {
     }
     
     generateProblems() {
+        console.log('Generating problems with settings:', {
+            difficulty: this.difficulty,
+            digits: this.digits,
+            numbers: this.numbers,
+            interval: this.interval
+        }); // デバッグ用
+        
         this.correctAnswer = 0;
         
         switch (this.difficulty) {
@@ -494,6 +631,9 @@ class FlashCalculationGame {
         for (let i = 0; i < this.numbers; i++) {
             this.correctAnswer += this.mondai[i];
         }
+        
+        console.log('Generated problems:', this.mondai.slice(0, this.numbers)); // デバッグ用
+        console.log('Correct answer:', this.correctAnswer); // デバッグ用
     }
     
     generateLevel1Problems() {

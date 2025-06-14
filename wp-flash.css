@@ -1,5 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Kosugi+Maru&family=Righteous&family=Sawarabi+Gothic&display=swap');
 
+/* 待ち受け画面のスタイル */
+#WelcomeScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#WelcomeTitle h1 {
+    font-size: 3.5rem;
+    font-family: 'Kosugi Maru', sans-serif;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#WelcomeTitle h2 {
+    font-size: 2rem;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    margin-bottom: 40px;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#BeginButton {
+    width: 200px;
+    height: 80px;
+    font-size: 28px;
+    font-family: 'Kosugi Maru', sans-serif;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+}
+
+#BeginButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+#BeginButton:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+#WelcomeFooter {
+    margin-top: 50px;
+}
+
+#WelcomeFooter a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#WelcomeFooter a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 #HeaderDisplay{
     margin : 0;
     padding : 5px 20px;
@@ -103,6 +173,29 @@ button.num {
     font-weight : bold;
     color : orangered;
     background-color : lemonchiffon;
+}
+
+/* やめるボタンのスタイル */
+#QuitButton {
+    width : 100px;
+    height : 40px;
+    font-size: 16px;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#QuitButton:hover {
+    background-color: #ff3742;
+}
+
+#QuitButton:active {
+    background-color: #ff2233;
 }
 
 

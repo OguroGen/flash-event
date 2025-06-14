@@ -1,7 +1,22 @@
-<div id = "HeaderDisplay">１０級 : 2桁 2口 4秒 (10 kyu : 2 digits, 2 numbers, 4 seconds)</div>
-<div id = "mondai"></div>
+<!-- 待ち受け画面 -->
+<div id="WelcomeScreen">
+    <div id="WelcomeTitle">
+        <h1>ツクリテイデア</h1>
+        <h2>フラッシュ暗算ゲーム</h2>
+    </div>
+    <button id="BeginButton">はじめる</button>
+    <div id="WelcomeFooter">
+        <p><a href="https://tsukuriteidea.com/" target="_blank">ツクリテイデア</a></p>
+    </div>
+</div>
 
-<button id="StartButton">START</button>
+<!-- ゲーム画面 -->
+<div id="GameScreen" style="display: none;">
+    <div id = "HeaderDisplay">１０級 : 2桁 2口 4秒 (10 kyu : 2 digits, 2 numbers, 4 seconds)</div>
+    <div id = "mondai"></div>
+
+    <button id="StartButton">START</button>
+    <button id="QuitButton" style="display: none;">やめる</button>
 
 <ul id="menu">
 
@@ -138,3 +153,5 @@
         </tr>
     </table>
 </div>
+
+</div> <!-- GameScreen の終了タグ -->
