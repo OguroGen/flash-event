@@ -575,19 +575,18 @@ body {
     display: none;
     z-index: 2000;
     animation: fadeIn 0.5s ease;
+    overflow-y: auto; /* スクロール可能に */
 }
 
 .result-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* absoluteからrelativeに変更 */
+    margin: 20px auto; /* 上下の余白を追加 */
     background: 
         linear-gradient(135deg, #ffffff 0%, #fff3e0 100%);
-    padding: 45px;
-    border-radius: 30px;
+    padding: 30px; /* パディングを縮小 */
+    border-radius: 20px; /* 少し小さく */
     text-align: center;
-    max-width: 550px;
+    max-width: 500px; /* 最大幅を縮小 */
     width: 90%;
     box-shadow: 
         0 25px 60px rgba(255, 107, 157, 0.4);
@@ -646,10 +645,10 @@ body {
 }
 
 .name-input {
-    width: 320px;
-    padding: 20px 25px;
-    font-size: 20px;
-    margin: 25px 0;
+    width: 280px; /* 幅を縮小 */
+    padding: 15px 20px; /* パディングを縮小 */
+    font-size: 18px; /* フォントサイズを縮小 */
+    margin: 15px 0; /* 余白を縮小 */
     border: 3px solid #ff6b9d;
     border-radius: 15px;
     text-align: center;
@@ -660,6 +659,7 @@ body {
     transition: all 0.3s ease;
     letter-spacing: 1px;
     box-shadow: 0 4px 15px rgba(255, 107, 157, 0.2);
+    cursor: text;
 }
 
 .name-input:focus {
@@ -669,15 +669,119 @@ body {
     background: white;
 }
 
-.qr-code {
-    margin: 35px auto;
-    padding: 35px;
+/* ひらがなキーボードのスタイル */
+.hiragana-keyboard {
+    margin: 15px 0;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
+    border-radius: 10px;
+    border: 2px solid #ff6b9d;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+    max-height: 300px; /* 最大高さを制限 */
+    overflow-y: auto; /* 必要に応じてスクロール */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.key {
+    min-width: 28px; /* サイズを縮小 */
+    height: 32px;
+    font-size: 13px; /* フォントサイズを縮小 */
+    font-weight: 600;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%);
+    color: #ff6b9d;
+    border: 1px solid #ff6b9d; /* ボーダーを細く */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.key:hover {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+    color: white;
+    transform: translateY(-1px); /* 移動量を縮小 */
+    box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
+}
+
+.key:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(255, 107, 157, 0.3);
+}
+
+.key.special {
+    background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%);
+    color: white;
+    border-color: #ffa726;
+}
+
+.key.special:hover {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 167, 38, 0.3);
+}
+
+.key.control {
+    background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+    color: white;
+    border-color: #66bb6a;
+    font-size: 10px; /* コントロールキーのフォントサイズを縮小 */
+    min-width: 45px; /* 幅を縮小 */
+}
+
+.key.control:hover {
+    background: linear-gradient(135deg, #5cb85c 0%, #449d44 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 187, 106, 0.3);
+}
+
+.key.backspace {
+    background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+    border-color: #ff4757;
+    font-size: 14px;
+}
+
+.key.backspace:hover {
+    background: linear-gradient(135deg, #ff3742 0%, #ff2233 100%);
+    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+}
+
+.key.clear {
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+    border-color: #9c27b0;
+}
+
+.key.clear:hover {
+    background: linear-gradient(135deg, #8e24aa 0%, #6a1b9a 100%);
+    box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
+}
+
+.key.space {
+    min-width: 60px; /* スペースキーの幅を縮小 */
+}
+
+.qr-code {
+    margin: 20px auto; /* 余白を縮小 */
+    padding: 20px; /* パディングを縮小 */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px; /* 少し小さく */
     display: inline-block;
     box-shadow: 
-        0 15px 40px rgba(255, 107, 157, 0.3);
-    border: 3px solid #ff6b9d;
+        0 10px 25px rgba(255, 107, 157, 0.2); /* シャドウを減らす */
+    border: 2px solid #ff6b9d; /* ボーダーを細く */
 }
 
 .qr-instruction {

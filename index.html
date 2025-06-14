@@ -131,7 +131,108 @@
                     <div id="resultText"></div>
                     <div id="certificateSection" class="certificate-section" style="display: none;">
                         <p class="name-prompt">お名前を入力してください：</p>
-                        <input type="text" id="nameInput" class="name-input" placeholder="お名前" />
+                        <input type="text" id="nameInput" class="name-input" placeholder="お名前" 
+                               lang="ja" inputmode="text" autocomplete="name" readonly />
+                        
+                        <!-- ひらがなキーボード -->
+                        <div id="hiraganaKeyboard" class="hiragana-keyboard">
+                            <div class="keyboard-row">
+                                <button class="key" data-char="あ">あ</button>
+                                <button class="key" data-char="い">い</button>
+                                <button class="key" data-char="う">う</button>
+                                <button class="key" data-char="え">え</button>
+                                <button class="key" data-char="お">お</button>
+                                <button class="key" data-char="か">か</button>
+                                <button class="key" data-char="き">き</button>
+                                <button class="key" data-char="く">く</button>
+                                <button class="key" data-char="け">け</button>
+                                <button class="key" data-char="こ">こ</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key" data-char="さ">さ</button>
+                                <button class="key" data-char="し">し</button>
+                                <button class="key" data-char="す">す</button>
+                                <button class="key" data-char="せ">せ</button>
+                                <button class="key" data-char="そ">そ</button>
+                                <button class="key" data-char="た">た</button>
+                                <button class="key" data-char="ち">ち</button>
+                                <button class="key" data-char="つ">つ</button>
+                                <button class="key" data-char="て">て</button>
+                                <button class="key" data-char="と">と</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key" data-char="な">な</button>
+                                <button class="key" data-char="に">に</button>
+                                <button class="key" data-char="ぬ">ぬ</button>
+                                <button class="key" data-char="ね">ね</button>
+                                <button class="key" data-char="の">の</button>
+                                <button class="key" data-char="は">は</button>
+                                <button class="key" data-char="ひ">ひ</button>
+                                <button class="key" data-char="ふ">ふ</button>
+                                <button class="key" data-char="へ">へ</button>
+                                <button class="key" data-char="ほ">ほ</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key" data-char="ま">ま</button>
+                                <button class="key" data-char="み">み</button>
+                                <button class="key" data-char="む">む</button>
+                                <button class="key" data-char="め">め</button>
+                                <button class="key" data-char="も">も</button>
+                                <button class="key" data-char="や">や</button>
+                                <button class="key" data-char="ゆ">ゆ</button>
+                                <button class="key" data-char="よ">よ</button>
+                                <button class="key" data-char="ら">ら</button>
+                                <button class="key" data-char="り">り</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key" data-char="る">る</button>
+                                <button class="key" data-char="れ">れ</button>
+                                <button class="key" data-char="ろ">ろ</button>
+                                <button class="key" data-char="わ">わ</button>
+                                <button class="key" data-char="を">を</button>
+                                <button class="key" data-char="ん">ん</button>
+                                <button class="key special" data-char="ー">ー</button>
+                                <button class="key special" data-char="っ">っ</button>
+                                <button class="key special" data-char="ゃ">ゃ</button>
+                                <button class="key special" data-char="ゅ">ゅ</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key special" data-char="ょ">ょ</button>
+                                <button class="key special" data-char="が">が</button>
+                                <button class="key special" data-char="ぎ">ぎ</button>
+                                <button class="key special" data-char="ぐ">ぐ</button>
+                                <button class="key special" data-char="げ">げ</button>
+                                <button class="key special" data-char="ご">ご</button>
+                                <button class="key special" data-char="ざ">ざ</button>
+                                <button class="key special" data-char="じ">じ</button>
+                                <button class="key special" data-char="ず">ず</button>
+                                <button class="key special" data-char="ぜ">ぜ</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key special" data-char="ぞ">ぞ</button>
+                                <button class="key special" data-char="だ">だ</button>
+                                <button class="key special" data-char="ぢ">ぢ</button>
+                                <button class="key special" data-char="づ">づ</button>
+                                <button class="key special" data-char="で">で</button>
+                                <button class="key special" data-char="ど">ど</button>
+                                <button class="key special" data-char="ば">ば</button>
+                                <button class="key special" data-char="び">び</button>
+                                <button class="key special" data-char="ぶ">ぶ</button>
+                                <button class="key special" data-char="べ">べ</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key special" data-char="ぼ">ぼ</button>
+                                <button class="key special" data-char="ぱ">ぱ</button>
+                                <button class="key special" data-char="ぴ">ぴ</button>
+                                <button class="key special" data-char="ぷ">ぷ</button>
+                                <button class="key special" data-char="ぺ">ぺ</button>
+                                <button class="key special" data-char="ぽ">ぽ</button>
+                                <button class="key control backspace" id="backspace">⌫</button>
+                                <button class="key control clear" id="clearName">クリア</button>
+                                <button class="key control space" data-char=" ">スペース</button>
+                            </div>
+                        </div>
+                        
                         <div id="qrcode" class="qr-code"></div>
                         <p class="qr-instruction">スマートフォンでQRコードを読み取ると認定証を表示できます</p>
                     </div>

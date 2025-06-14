@@ -118,6 +118,9 @@ class FlashCalculationGame {
                 this.generateQRCode();
             }
         });
+        
+        // ひらがなキーボードのイベントリスナー
+        this.setupHiraganaKeyboard();
     }
     
     // 画面遷移関数
@@ -508,6 +511,14 @@ class FlashCalculationGame {
         
         document.getElementById('resultText').innerHTML = resultText;
         document.getElementById('resultModal').style.display = 'block';
+        
+        // 合格時に名前入力フィールドをフォーカス
+        if (isPassed) {
+            setTimeout(() => {
+                const nameInput = document.getElementById('nameInput');
+                nameInput.focus();
+            }, 500);
+        }
     }
 
     // 新機能：QRコード生成
@@ -528,6 +539,74 @@ class FlashCalculationGame {
         qr.addData(certificateUrl);
         qr.make();
         qrcodeDiv.innerHTML = qr.createImgTag(4);
+    }
+    
+    // ひらがなキーボードの設定
+    setupHiraganaKeyboard() {
+        // 文字キーのイベントリスナー
+        document.querySelectorAll('.key[data-char]').forEach(key => {
+            key.addEventListener('click', (e) => {
+                const char = e.target.dataset.char;
+                this.addCharToName(char);
+            });
+        });
+        
+        // バックスペースキー
+        document.getElementById('backspace').addEventListener('click', () => {
+            this.backspaceName();
+        });
+        
+        // クリアキー
+        document.getElementById('clearName').addEventListener('click', () => {
+            this.clearName();
+        });
+    }
+    
+    // 名前に文字を追加
+    addCharToName(char) {
+        const nameInput = document.getElementById('nameInput');
+        nameInput.value += char;
+        
+        // 入力イベントを発生させてQRコードを更新
+        nameInput.dispatchEvent(new Event('input'));
+        
+        // ボタンのフィードバックアニメーション
+        this.animateKeyPress(event.target);
+    }
+    
+    // 最後の文字を削除
+    backspaceName() {
+        const nameInput = document.getElementById('nameInput');
+        nameInput.value = nameInput.value.slice(0, -1);
+        
+        // 入力イベントを発生させてQRコードを更新
+        nameInput.dispatchEvent(new Event('input'));
+        
+        // ボタンのフィードバックアニメーション
+        this.animateKeyPress(document.getElementById('backspace'));
+    }
+    
+    // 名前をクリア
+    clearName() {
+        const nameInput = document.getElementById('nameInput');
+        nameInput.value = '';
+        
+        // QRコードをクリア
+        document.getElementById('qrcode').innerHTML = '';
+        
+        // ボタンのフィードバックアニメーション
+        this.animateKeyPress(document.getElementById('clearName'));
+    }
+    
+    // キープレスアニメーション
+    animateKeyPress(button) {
+        button.style.transform = 'translateY(2px) scale(0.95)';
+        button.style.boxShadow = '0 1px 3px rgba(255, 107, 157, 0.3)';
+        
+        setTimeout(() => {
+            button.style.transform = '';
+            button.style.boxShadow = '';
+        }, 150);
     }
     
     celebrateSuccess() {
